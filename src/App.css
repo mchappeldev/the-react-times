@@ -13,11 +13,10 @@ a {
   color: #444;
 }
 .App {
-  background: #f1f2f5;
+  
   display: grid;
-  grid-template-columns: minmax(5ch, 250px) 1fr 1fr;
+  grid-template-columns: min(30ch, 15vw) 1fr 1fr;
   grid-template-rows: 0.25fr 3rem 0.25fr 1fr 0.15fr;
-  grid-auto-columns: 1fr;
   gap: 1rem 1rem;
   grid-auto-flow: row;
   grid-template-areas:
@@ -29,7 +28,7 @@ a {
   justify-items: stretch;
   justify-content: center;
   height: 100vh;
-  width: 100vw;
+  width: 80vw;
 }
 
 .Header {
@@ -44,28 +43,27 @@ a {
   /* background-color: blue; */
   grid-area: Nav;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  margin-left: 1rem;
   overflow: scroll;
+  width: 100%;
 }
 .Nav::-webkit-scrollbar {
   display: none;
 }
 
 .Nav > div {
-  background-color: white;
-  padding: 0.5rem;
-  box-sizing: border-box;
-  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  max-width: 50%;
   transition: all 0.1s ease-in-out;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 2px;
 
-  border: #444 solid 2px;
 }
 .Nav > div:hover {
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  border-bottom: rgb(107, 107, 224) 4px solid;
 }
 
 .Search {
@@ -74,7 +72,7 @@ a {
   background: white;
   grid-area: Search;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 0.5rem;
   flex-direction: column;
   border: #444 solid 2px;
@@ -93,11 +91,12 @@ a {
 .Articles {
   grid-area: Articles;
   display: grid;
-
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-template-rows: auto;
-  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(33.3333% - 1rem, (40rem - 100%) * 999, 100%), 1fr));
+  padding-bottom: 0.05rem;
+  gap: 1rem;
+  flex-wrap: wrap;
   margin-right: 1rem;
+  justify-content: center;
   overflow: scroll;
 }
 .Articles::-webkit-scrollbar {
@@ -105,23 +104,23 @@ a {
 }
 
 .thumb {
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/users-2.png);
-  padding-bottom: 50%;
+  padding-top: 50%;
   background-size: cover;
   background-position: center center;
 }
 
 .Card {
   background: white;
-  overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   color: #444;
   transition: all 0.1s ease-in-out;
   display: flex;
-
   flex-direction: column;
   box-sizing: border-box;
   border-radius: 5px;
+  overflow: hidden;
+  min-height: 55ch;
+  max-width: 500px;
 }
 
 .Card:hover {
@@ -145,20 +144,15 @@ a {
   .App {
     background: #f1f2f5;
     padding: 1rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.25fr 3rem 1fr 0.5fr 0.15fr;
-    grid-auto-columns: 1fr;
-    gap: 1rem 1rem;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "Header"
-      "Search"
-      "Articles"
-      "Nav"
-      "Footer";
-    justify-items: stretch;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     height: 100%;
   }
+}
+.selectedCategory {
+  color: rgb(107, 107, 224);
+  font-weight: 600;
+  
+  border-bottom: rgb(107, 107, 224) 4px solid;
 }

@@ -3,6 +3,10 @@ body {
   font-family: "Noticia Text", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f2f5;
 }
 
 code {
