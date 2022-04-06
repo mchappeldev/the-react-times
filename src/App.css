@@ -156,3 +156,14 @@ a {
   
   border-bottom: rgb(107, 107, 224) 4px solid;
 }
+.unselectedCategory {
+  color: #ddd;
+  font-weight: 200 !important;
+}
+.Pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding: 5px;
+
+}
