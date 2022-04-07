@@ -1,14 +1,19 @@
+:root {
+  --main-bg-color: hsla(210, 0%, 95%, 1);
+  --card-bg-color: hsla(210, 0%, 100%, 1);
+  --dark-text-color: hsla(210, 0%, 15%, 1);
+  --light-text-color: hsla(210, 0%, 35%, 1);
+  --accent-color: hsla(210, 100%, 45%, 1);
+  --border-radius: 0.25rem;
+}
+
 body {
   margin: 0;
-  font-family: "Noticia Text", serif;
+  font-family: 'Noticia Text', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f1f2f5;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  background: var(--main-bg-color);
 }
