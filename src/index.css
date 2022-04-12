@@ -9,7 +9,7 @@
 
 body {
   margin: 0;
-  font-family: 'Noticia Text', serif;
+  font-family: "Noticia Text", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;

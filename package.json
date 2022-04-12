@@ -1,22 +1,45 @@
 {
   "homepage": ".",
-  "name": "nyt_top_stories",
+  "name": "the-react-times",
+  "version": "0.1.0",
   "private": true,
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.0.1",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.26",
+    "@types/react": "^18.0.3",
+    "@types/react-dom": "^18.0.0",
     "dayjs": "^1.11.0",
-    "ngrok": "^4.3.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.6.3",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^1.0.7",
-    "prettier": "2.6.2",
-    "vite": "^2.8.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
