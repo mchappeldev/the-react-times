@@ -58,7 +58,7 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
-  }, [selectedCategory]);
+  }, [selectedCategory, displayedArticleRange]);
 
   const filterArticles = (input: string) => {
     setSearchString(input);
