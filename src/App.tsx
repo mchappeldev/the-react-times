@@ -11,6 +11,19 @@ dayjs.extend(timezone);
 const API_KEY = "f6FfH5bEV1H6wCicaGGh88btsVSrAoKE";
 const categories = ["Arts", "Automobiles", "Books", "Business", "Fashion", "Food", "Health", "Home", "Insider", "Magazine", "Movies", "NYregion", "Obituaries", "Opinion", "Politics", "RealEstate", "Science", "Sports", "SundayReview", "Technology", "Theater", "T-Magazine", "Travel", "Upshot", "US", "World"];
 
+interface Multimedia {
+  url: string;
+}
+
+interface Article {
+  title: string;
+  abstract: string;
+  multimedia: Array<Multimedia>;
+  short_url: string;
+  byline: string;
+  published_date: string;
+}
+
 function App() {
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
@@ -19,7 +32,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("Home");
   const [searchString, setSearchString] = useState("");
   const [searchMatches, setSearchMatches] = useState(0);
-  const [pageArray, setPageArray] = useState([]);
+  const [pageArray, setPageArray] = useState<number[]>([]);
   const [categoryMenu, setCategoryMenu] = useState(false);
 
   const handleMenu = () => {
@@ -33,7 +46,7 @@ function App() {
     })
       .then((response) => {
         response.json().then((data) => {
-          const rawData = data.results.filter((....) => article.title && article.multimedia);
+          const rawData = data.results.filter((article: Article) => article.title && article.multimedia);
           setArticles(rawData);
           setFilteredArticles(rawData);
           setDisplayedArticles(rawData.slice(displayedArticleRange[0], displayedArticleRange[1]));
@@ -47,16 +60,16 @@ function App() {
       });
   }, [selectedCategory]);
 
-  const filterArticles = (input) => {
+  const filterArticles = (input: string) => {
     setSearchString(input);
-    const results = articles.filter((article) => article.title.toLowerCase().includes(input.toLowerCase()) || article.abstract.toLowerCase().includes(input.toLowerCase()));
+    const results = articles.filter((article: Article) => article.title.toLowerCase().includes(input.toLowerCase()) || article.abstract.toLowerCase().includes(input.toLowerCase()));
     setFilteredArticles(results);
     setSearchMatches(results.length);
     setDisplayedArticles(results.slice(0, 9));
     setPageArray(Array.from(Array(Math.ceil(results.length / 10)).keys(), (x) => x + 1));
   };
 
-  const selectPage = (i) => {
+  const selectPage = (i: number) => {
     const start = i * 10;
     const end = start + 10;
     setDisplayedArticleRange([start, end]);
@@ -78,14 +91,14 @@ function App() {
       <nav className={categoryMenu ? "open" : ""}>
         {categories.map((category, i) => {
           return (
-            <div obj={category} key={i} onClick={() => setSelectedCategory(category)} className={category === selectedCategory ? "selected-category" : ""}>
+            <div key={i} onClick={() => setSelectedCategory(category)} className={category === selectedCategory ? "selected-category" : ""}>
               {category}{" "}
             </div>
           );
         })}
       </nav>
       <main className="articles">
-        {displayedArticles.map((article, i) => {
+        {displayedArticles.map((article: Article, i) => {
           return (
             <div key={i} className="card">
               <a href={article.short_url}>
