@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import { Link, Outlet, useParams } from "react-router-dom";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -29,11 +30,11 @@ function App() {
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [displayedArticles, setDisplayedArticles] = useState([]);
   const [displayedArticleRange, setDisplayedArticleRange] = useState([0, 10]);
-  const [selectedCategory, setSelectedCategory] = useState("Home");
   const [searchString, setSearchString] = useState("");
   const [searchMatches, setSearchMatches] = useState(0);
   const [pageArray, setPageArray] = useState<number[]>([]);
   const [categoryMenu, setCategoryMenu] = useState(false);
+  let { selectedCategory = "Home" } = useParams();
 
   const handleMenu = () => {
     setCategoryMenu(!categoryMenu);
@@ -91,8 +92,10 @@ function App() {
       <nav className={categoryMenu ? "open" : ""}>
         {categories.map((category, i) => {
           return (
-            <div key={i} onClick={() => setSelectedCategory(category)} className={category === selectedCategory ? "selected-category" : ""}>
-              {category}{" "}
+            <div className={category === selectedCategory ? "selected-category" : ""}>
+              <Link to={`/${category}`} key={i}>
+                {category}
+              </Link>
             </div>
           );
         })}
