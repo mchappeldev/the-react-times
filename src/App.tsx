@@ -44,7 +44,6 @@ function App() {
           setSearchString("");
           setSearchMatches(rawData.length);
           setPageArray(Array.from(Array(Math.ceil(rawData.length / 10)).keys(), (x) => x + 1));
-          console.log("I just called the API!");
         });
       })
       .catch((err) => {
