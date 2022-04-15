@@ -4,8 +4,6 @@ import "./index.css";
 import App from "./App";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
-const basename = document.querySelector("base")?.getAttribute("href") ?? "/";
-
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
