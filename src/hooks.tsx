@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 //Interfaces
 import { Article } from "./Interfaces";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export function useArticleFetch(selectedCategory: string) {
   const [articles, setArticles] = useState([]);
